@@ -100,6 +100,11 @@ module.exports = class Configuration
 
     # ---
     @loggers  = {}
+    
+    @pow_info_host = options.pow_info_host ? process.env['POW_INFO_HOST'] ? "show.pow" 
+
+  getPowInfoHostPattern: () ->
+    return /// ^ (#{@pow_info_host}) ($|\.) ///
 
   # Retrieve a `Logger` instance with the given `name`.
   getLogger: (name) ->

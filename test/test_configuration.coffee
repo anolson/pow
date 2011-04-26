@@ -100,3 +100,9 @@ module.exports = testCase
     test.same fixturePath("tmp/log2/test.log"), logger.path
 
     test.done()
+
+  "getPowInfoHostPattern returns the info host pattern": (test) ->
+    test.expect 1
+    configuration = createConfiguration hostRoot: fixturePath("configuration")
+    test.same true, configuration.getPowInfoHostPattern().test("show.pow.dev")
+    test.done()
