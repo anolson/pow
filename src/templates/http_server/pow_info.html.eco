@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <title>Pow: Up and running</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    h1, h2 {
+      margin: 0;
+      padding: 15px 30px;
+      font-family: Helvetica, sans-serif;
+    }
+    h1 {
+      font-size: 36px;
+      background: #eeedea;
+      color: #000;
+      border-bottom: 1px solid #999090;
+    }
+    h2 {
+      font-size: 18px;
+      font-weight: normal;
+    }
+  </style>
+</head>
+<body>
+  <h1>Alright, you're running Pow!</h1>
+  <h2>Dest Port : <%= @configuration.dstPort %></h2>
+  <h2>HTTP Port : <%= @configuration.httpPort %></h2>
+  <h2>DNS Port : <%= @configuration.dnsPort %></h2>
+  <h2>Timeout : <%= @configuration.timeout %></h2>
+  <h2>Workers : <%= @configuration.workers %></h2>
+  
+  <h2>Domains : <%= @configuration.domains.join(", ") %></h2>
+  <h2>Host Root : <%= @configuration.hostRoot %></h2>
+  <h2>Log Root : <%= @configuration.logRoot %></h2>
+  <h2>RVM Path : <%= @configuration.rvmPath %></h2>
+</body>
+</html>

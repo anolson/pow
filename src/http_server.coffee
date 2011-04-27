@@ -149,4 +149,7 @@ module.exports = class HttpServer extends connect.HTTPServer
   handleNonexistentDomain: (req, res, next) =>
     host = req.pow.host
     name = host.slice 0, host.length - @configuration.domains[0].length - 1
-    @render res, 503, "nonexistent_domain", path: join @configuration.root, name
+    if @configuration.getPowInfoHostPattern().test(host)
+      @render res, 200, "pow_info", {@configuration}
+    else
+      @render res, 503, "nonexistent_domain", path: join @configuration.root, name

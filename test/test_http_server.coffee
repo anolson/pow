@@ -41,6 +41,14 @@ module.exports = testCase
       ], ->
         done -> test.done()
 
+  "responds with an info page for requests to show.pow.*": (test) ->
+    test.expect 2
+    serveRoot "apps", (request, done) ->
+      request "GET", "/", host: "show.pow.dev", (body, response) ->
+        test.same 200, response.statusCode
+        test.same "pow_info", response.headers["x-pow-template"]
+        done -> test.done()
+
   "responds with a custom 503 when a domain isn't configured": (test) ->
     test.expect 2
     serveRoot "apps", (request, done) ->
